@@ -1,0 +1,115 @@
+package Resp_Perpustakaan;
+import java.util.ArrayList;  
+import java.util.Scanner;
+
+import javax.swing.event.SwingPropertyChangeSupport;
+
+public class MainMethod {
+    public static ArrayList<String> judulbuku = new ArrayList<String>();
+    public static ArrayList<String> pengarang = new ArrayList<String>();
+    public static ArrayList<String> penerbit = new ArrayList<String>();
+    public static ArrayList<String> tahun = new ArrayList<String>();
+
+    public static int hapusin, hapus , jumlahbuku = 0;
+    public static String tambah, cari;
+    public static boolean exit = true, status = false;
+    public static Scanner inp = new Scanner(System.in);
+    
+    public static void tambahbuku(){
+        System.out.println();
+        System.out.println("Masukkan judul Buku Yang Ingin Ditambahkan ");
+        tambah = inp.next();
+        judulbuku.add(tambah);
+        System.out.println("Masukkan pengarang Buku Yang Ingin Ditambahkan ");
+         tambah = inp.next();
+        pengarang.add(tambah);
+        System.out.println("Masukkan penerbit Buku Yang Ingin Ditambahkan ");
+         tambah = inp.next();
+        penerbit.add(tambah);
+        System.out.println("Masukkan tahun terbit Buku Yang Ingin Ditambahkan ");
+         tambah = inp.next();
+        tahun.add(tambah);
+    jumlahbuku++;
+    System.out.println("--------------------------------------------------------------------------");
+    }
+    
+    public static void hapusbuku(){     
+        
+    for(int i = 0; i < jumlahbuku; i++){
+            System.out.println((i+1) + " || " +judulbuku.get(i)+ " | "+ pengarang.get(i)+ " | " + penerbit.get(i)+ " | " + tahun.get(i));
+        } 
+        System.out.println("Masukkan Nomer buku Yang ingin dihapus");
+        hapus = inp.nextInt();
+        hapus = hapus - 1;
+        judulbuku.remove(hapus);
+        pengarang.remove(hapus);
+        penerbit.remove(hapus);
+        tahun.remove(hapus);
+        jumlahbuku --;
+        System.out.println("--------------------------------------------------------------------------");  
+    }
+
+    public static void caribuku(){
+        int j;
+        System.out.println("");
+        System.out.println("Masukkan judul Buku yang ingin dicari");
+
+        cari = inp.next();
+        for(j = 0; j < judulbuku.size(); j++){       
+        if(cari.equalsIgnoreCase(judulbuku.get(j))){
+            status = true;
+            System.out.println("data ditemukan di posisi " + (j + 1) + " dan diindex ke " + j + " dengan judul buku " +cari);
+            break;
+          }else{
+            status = false;
+            System.out.println("Data Tidak Ditemukan");
+           break; 
+        }
+
+          
+    }
+}
+
+
+    public static void keluar(){
+        System.out.println("Apakah Anda Ingin Keluar Y/N = ");
+        tambah = inp.next();
+        exit = tambah.equalsIgnoreCase("n") && tambah.equalsIgnoreCase("y");        
+    }
+    
+    public static void main(String[] args) {
+       
+         System.out.println("Selamat Datang Admin Perpustakaan");
+         System.out.println();
+        do{
+        System.out.println("Fitur Kami");
+        System.out.println("1. Tambah Buku ");
+        System.out.println("2. Hapus Buku");
+        System.out.println("3. Cari Buku");
+        System.out.println("4. Keluar");
+        System.out.println();
+       
+        System.out.print("Ada Yang Bisa Kami Bantu = ");
+        int menu = inp.nextInt();
+        
+        switch(menu){
+            case 1 :
+                    tambahbuku();
+                break;
+            case 2 : 
+                    hapusbuku();
+                break;
+            case 3 : 
+                    caribuku();
+                break;
+            case 4 : 
+                    keluar();
+                break; 
+            default :
+                break;
+          }
+       }while(exit); 
+   }
+}
+        
+    
