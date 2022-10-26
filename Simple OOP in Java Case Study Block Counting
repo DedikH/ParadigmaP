@@ -1,0 +1,26 @@
+package com.mycompany.pertemuan9;
+import java.util.Scanner;
+
+public class clases {
+
+    public static class volume_balok {
+        public static int p, l, t, volume;
+        static void input(){
+            Scanner in = new Scanner(System.in);
+            System.out.print("Panjang = ");
+            p = in.nextInt();
+            System.out.print("Lebar = ");
+            l = in.nextInt();
+            System.out.print("Tinggi = ");
+            t = in.nextInt();
+        }
+        static int hitung_volume(int panjang, int lebar, int tinggi){
+            int volume = panjang * lebar * tinggi;
+            return volume;
+        }
+        public static void main(String args[]){
+            input();
+            System.out.println("Volume balok = "+ hitung_volume(p,l,t));
+        }
+    }
+}
